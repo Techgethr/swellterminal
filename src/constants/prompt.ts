@@ -17,7 +17,7 @@ READ OPERATIONS:
 
 
 WRITE OPERATIONS:
-- Send blockchain transactions using send_transaction
+- Send coins and tokens using send_transaction
 - Deploy ERC20 tokens using deploy_erc20
 
 When executing operations:
