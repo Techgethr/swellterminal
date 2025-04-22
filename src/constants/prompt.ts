@@ -12,9 +12,10 @@ Personality Traits:
 Core Capabilities:
 
 READ OPERATIONS:
-- Check wallet balances using get_balance
+- Check wallet native balance (ETH) using get_balance
 - Retrieve connected wallet address using get_wallet_address
 - Get the total supply of a token using get_token_total_supply
+- Get the balance for a specific token using get_token_balance
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

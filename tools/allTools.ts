@@ -3,6 +3,7 @@ import { getWalletAddressTool } from "./getWalletAddress";
 import { sendTransactionTool } from "./sendTransaction";
 import { deployErc20Tool } from "./deployERC20";
 import { getTokenTotalSupplyTool } from "./getTokenTotalSupply";
+import { getTokenBalanceTool } from "./getTokenBalance";
 
 export interface ToolConfig<T = any> {
   /**
@@ -51,4 +52,8 @@ export const tools: Record<string, ToolConfig> = {
    * Get the total spply of a token
    */
   get_token_total_supply: getTokenTotalSupplyTool,
+  /**
+   * Get the total spply of a token
+   */
+  get_token_balance: getTokenBalanceTool,
 };

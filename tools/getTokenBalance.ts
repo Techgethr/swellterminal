@@ -3,47 +3,50 @@ import type { ToolConfig } from "./allTools.js";
 import { formatEther } from "viem";
 import {tokensAvailable, abiByToken} from "../src/constants/tokens";
 
-import type { GetTokenTotalSupplyArgs } from "../interface/index.js";
+import type { GetTokenBalanceArgs } from "../interface/index.js";
 
 /**
- * Get the total spply of a token
+ * Get the user balance of a token
  *
- * This tool takes a single parameter, the token address to get the total supply
- * from.
  */
-export const getTokenTotalSupplyTool: ToolConfig<GetTokenTotalSupplyArgs> = {
+export const getTokenBalanceTool: ToolConfig<GetTokenBalanceArgs> = {
   definition: {
     type: "function",
     function: {
-      name: "get_token_total_supply",
-      description: "Get the balance of a wallet",
+      name: "get_token_balance",
+      description: "Get the token balance of a wallet",
       parameters: {
         type: "object",
         properties: {
           token: {
             type: "string",
             pattern: "^0x[a-fA-F0-9]{40}$",
-            description: "The token address to get the supply",
+            description: "The token to get the balance from",
+          },
+          wallet: {
+            type: "string",
+            pattern: "^0x[a-fA-F0-9]{40}$",
+            description: "The wallet address to get the balance from",
           },
         },
-        required: ["token"],
+        required: ["token","wallet"],
       },
     },
   },
-  handler: async ({ token }) => {
-    return await getSupply(token);
+  handler: async ({ token, wallet }) => {
+    return await getTokenBalance(token, wallet);
   },
 };
 
-async function getSupply(token: string) {
+async function getTokenBalance(token: string, wallet:string) {
   const publicClient = createViemPublicClient();
   const tokenOrigin = tokensAvailable.find((t) => t.contractId === token);
   const tokenToSend = abiByToken.find((t) => t.contractId === token);
   const result = await publicClient.readContract({
     address: tokenOrigin?.contractId,
     abi: tokenToSend?.ABI,
-    functionName: 'totalSupply',
-    args: [],
+    functionName: 'balanceOf',
+    args: [wallet],
   });
   const balance = Number(result) / 10**tokenOrigin?.decimals;
   return balance;

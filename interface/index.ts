@@ -59,3 +59,8 @@ export interface SendTransactionArgs {
 export interface GetTokenTotalSupplyArgs {
   token:string;
 }
+
+export interface GetTokenBalanceArgs {
+  token:string;
+  wallet:string;
+}
