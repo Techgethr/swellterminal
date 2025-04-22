@@ -2,6 +2,7 @@ import { getBalanceTool } from "./getBalance";
 import { getWalletAddressTool } from "./getWalletAddress";
 import { sendTransactionTool } from "./sendTransaction";
 import { deployErc20Tool } from "./deployERC20";
+import { getTokenTotalSupplyTool } from "./getTokenTotalSupply";
 
 export interface ToolConfig<T = any> {
   /**
@@ -46,4 +47,8 @@ export const tools: Record<string, ToolConfig> = {
    * Deploy an ERC20 token.
    */
   deploy_erc20: deployErc20Tool,
+  /**
+   * Get the total spply of a token
+   */
+  get_token_total_supply: getTokenTotalSupplyTool,
 };

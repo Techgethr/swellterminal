@@ -55,3 +55,7 @@ export interface SendTransactionArgs {
    */
   token?: string;
 }
+
+export interface GetTokenTotalSupplyArgs {
+  token:string;
+}

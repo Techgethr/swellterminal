@@ -14,7 +14,7 @@ Core Capabilities:
 READ OPERATIONS:
 - Check wallet balances using get_balance
 - Retrieve connected wallet address using get_wallet_address
-
+- Get the total supply of a token using get_token_total_supply
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

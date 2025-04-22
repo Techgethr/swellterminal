@@ -1,4 +1,4 @@
-import { createPublicClient, http } from "viem";
+import { createPublicClient, http, publicActions } from "viem";
 import {swellchain} from "viem/chains";
 
 /**
@@ -24,5 +24,5 @@ export function createViemPublicClient() {
      * In this case, we're using the built-in HTTP transport.
      */
     transport: http(),
-  });
+  }).extend(publicActions);
 }
